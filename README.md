@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Project 8: Todo list app
 
 ---
@@ -19,6 +18,3 @@ Projet tutoré dans le cadre du parcours Développeur d'Application Front End, *
 - Ecriture de **test fonctionnels** avec Jasmine
 - Réalisation d'**audit de performance**
 - Rédaction de **documentation** (fonctionnelle et technique)
-=======
-# Projet-8-OC_TodoApp
->>>>>>> df35ae438791eca68b6fa06a6c07034f7f0d4a2c

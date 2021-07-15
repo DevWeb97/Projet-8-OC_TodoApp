@@ -84,7 +84,7 @@ Il offre des suggestions d'ajustement lié aux points faibles rapportés.
 
 Lighthouse a été configuré de façon à simuler l'utilisation sur un smartphone avet une connexion 3G moyenne.
 
-![Lighthouse configuration pour mobile](audit_assets/img/config-Lighthouse-mobile-v1.jpg)
+![Lighthouse configuration pour mobile](/audit_assets/img/config-Lighthouse-mobile-v1.JPG)
 
 En effet, 68% des visites de site web à l'échelle mondiale sont faites depuis un smartphone. [(source: perficient.com)](https://www.perficient.com/insights/research-hub/mobile-vs-desktop-usage)
 
@@ -99,7 +99,7 @@ Cette configuration vient consolider notre objectif de préparer au mieux notre 
 
 ## Analyse du rapport
 
-![ Resultat global](audit_assets/img/metric-global.jpg)
+![ Resultat global](/audit_assets/img/metric-global.JPG)
 
 Les scores fournit par Lighthouse vont de 0 à 100.
 
@@ -114,7 +114,7 @@ Ces résultats sont calculés en fonction de critères spécifiques selon le mé
 
 ### Performance
 
-![ Resultat global](audit_assets/img/performance-metric.jpg)
+![ Resultat global](/audit_assets/img/performance-metric.JPG)
 
 Le score faible (<50) induit que le chargement du site audité (ici sur mobile) est lent.
 
@@ -166,10 +166,10 @@ Dans le cas de Todolist&period;net, seuls 2 critères (TBT et CLS) sur 6 ont ré
 
 La section "opportunités" propose des solutions possibles pour accélérer le chargement des pages du site, ainsi que le temps gagné si correctement mis en place:
 
-![Performance opportunités](audit_assets/img/performance-opportunities.jpg)
+![Performance opportunités](/audit_assets/img/performance-opportunities.JPG)
 
 | Opportunités d'améliorations                                                                                                                  | Bénéfices                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| --- | --- |
 | Implémenter HTTP/2                                                                                                                            | Communication entre client et serveur plus efficace et rapide                                                                          |
 | attribut `preconnect` <br /> <br />attribut `dns-prefetch`                                                                                    | Aide le navigateur à prioriser les requêtes vers des ressources externes <br /><br /> Accélère la résolution DNS des serveurs externes |
 | `defer` les scripts JS qui ne sont pas nécessaires au chargement initial de la page dans le `head`. <br />Scripts nécessaires à la fin `body` | Prioriser le render de la page: DOM > Scripts nécessaires > Scripts additionnels                                                       |
@@ -184,12 +184,12 @@ La section "opportunités" propose des solutions possibles pour accélérer le c
 
 La section "diagnostics" quelques points présents dans le site qui mériteraient une attention plus particulière:
 
-![ Performance diagnostiques](audit_assets/img/performance-diagnostics.jpg)
+![ Performance diagnostiques](/audit_assets/img/performance-diagnostics.JPG)
 
 | Problèmes diagnostiqués                                                                                                  | Solutions possibles & Bénéfices                                                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --- | --- |
 | Requêtes répétitives pour des fichiers statiques                                                                         | Mettre en place un système de 'caching' pour accélérer le chargement d'images/scripts JS souvent demandés                                                                                            |
-| Les `<img />` n'ont pas d'attribut `width` et `height`                                                                   | Préciser ces attributs permet d'améliorer le CLS                                                                                                                                                     |
+| Les `<img />` n'ont pas d'attribut `width` et `height`                                                                   | Préciser ces attributs permet d'améliorer le CLS                                                                                                                                                    |
 | Utilisation de `document.write()` pour injecter du contenu dynamiquement ( peut poser problème sur des connexions lentes | Placer les éléments dans scripts et utiliser `async` pour injecter le nécessaire de façon asynchrone                                                                                                 |
 | La performance au niveau du scrolling n'est pas optimiser                                                                | Les gestionnaires d'événements en charge du scroll/ navigation au toucher devrait utiliser `{passive: true}` pour éviter les délais entre l'action de l'utilisateur et son résultat dans l'interface |
 
@@ -212,18 +212,13 @@ sources:
   
 
 
-![ Mesures accessibilité](audit_assets/img/accessibility-metrics.jpg)
+![ Mesures accessibilité](/audit_assets/img/accessibility-metrics.JPG)
 
 | Problèmes diagnostiqués | Solutions possibles & Bénéfices |
-
-| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-
+| --- | --- |
 | Manque certains attributs aidant les lecteurs d'écran | Attributs `alt` sur les `<img />` <br/> `title` pour les `<iframe><iframe/>`<br /> `<label><label/>` pour les champs de formulaires |
-
 | l'ordre des titres ne sont pas respectés | `h1`>`h2`>`h3` <br /> Facilite la navigation au clavier |
-
 | Pas de langue par défaut pour l'interprétation du contenu | Préciser l'attribut `lang` pour que le contenu soient lu avec la **prononciation** correct |
-
 | Pas de contraste suffisant entre background et foreground | S'assurer que le contraste entre le texte et son fond aient un ratio suffisant, pour que le texte soit lu facilement |
   
     
@@ -235,13 +230,13 @@ sources:
 
 #### Best Practice
 
-![Mesures Best Practice](audit_assets/img/best-practice-metrics.jpg)
+![Mesures Best Practice](/audit_assets/img/best-practice-metrics.JPG)
 
-| Problèmes diagnostiqués                                                               | Solutions possibles & Bénéfices                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Le site n'est pas sécurisé                                                            | Utiliser `HTTPS` pour sécuriser les données même ceux n'utilisation de donnée sensible. <br /> Rassure l'utilisateur.                                                                            |
-| Utilise des librairies Javascripts ayant des vulnérabilités connues (`[jQuery@2.2.4]` | Mettre à jour le code utilisé <br />Eviter leur utilisation                                                                                                                                      |
-| Element interactifs ne sont pas facile d'utilisation                                  | Dimension minimum : 48px par 48px. <br /> Avoir suffisamment d'espace autour d'eux pour éviter des chevauchements indésirables                                                                   |
+| Problèmes diagnostiqués| Solutions possibles & Bénéfices|
+| --- | ---|
+| Le site n'est pas sécurisé| Utiliser `HTTPS` pour sécuriser les données même ceux n'utilisation de donnée sensible. <br /> Rassure l'utilisateur.  |
+| Utilise des librairies Javascripts ayant des vulnérabilités connues (`[jQuery@2.2.4]` | Mettre à jour le code utilisé <br />Eviter leur utilisation                                                                                  |
+| Element interactifs ne sont pas facile d'utilisation| Dimension minimum : 48px par 48px. <br /> Avoir suffisamment d'espace autour d'eux pour éviter des chevauchements indésirables                                                                   |
 | Existance de lien qui ne sont pas indexable                                           | Utiliser attribut `href` avec la destination approprié                                                                                                                                           |
 | Images n'ont pas la résolution appropriée                                             | Adapter la taille des images proportionnellement à la dimension d'affichage utilisée, pour une clarité maximale. <br > (ex: img de 16px x 16px devraient avoir une dimension de 32x32 à l'écran) |
   
@@ -254,10 +249,10 @@ sources:
 
 #### SEO
 
-![Mesure best practice](audit_assets/img/seo-metrics.jpg)
+![Mesure best practice](/audit_assets/img/seo-metrics.JPG)
 
 | Problèmes diagnostiqués                              | Solutions possibles & Bénéfices                                                                                                                              |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ---| ---|
 | Pas optimiser pour écran de smartphone               | Préciser `<meta name="viewport">` avec attribut `width`, `initial-scale`                                                                                     |
 | Taille de police trop faible                         | Favorisé taille >12px pour que les utilisateurs n'aient pas à pincer pour zoomer/dézoomer <br /> Contenu devrait prendre au moins 60% de l'espace disponible |
 | Element interactifs ne sont pas facile d'utilisation | Dimension minimum : 48px par 48px. <br /> Avoir suffisamment d'espace autour d'eux pour éviter des chevauchements indésirables                               |
@@ -267,7 +262,7 @@ sources:
 --- 
   
     
-    
+
 <a id="summary" />
 
 ## Conclusion

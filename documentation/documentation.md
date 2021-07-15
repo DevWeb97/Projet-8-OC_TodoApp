@@ -24,17 +24,12 @@ Controller
 Dans le cas de Todo-list, les différentes fonctionnalités de l'application repose sur ces 3 blocs.  
 Pour les aider dans leur tâche respective, d'autres modules ont été créé en renfort des 3 principaux:
 
-<!-- prettier-ignore-start -->
-
-
 | Modules supplémentaire | Roles                                                                                                                                                              | Utilisé par le module principal |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
 | **app**                | Contient l'instanciation des 3 modules principaux ainsi que la fonction qui permet le lancement de l'application <br /> C'est le point d'entrée dans l'application | -                               |
 | **helpers**            | Contient des fonctions custom permettant de sélectionner des éléments du DOM, d'automatiser la mise en place du même event listener sur une liste d'élément <br /> | view<br/> app                   |
 | **template**           | Contient les templates prédéfinis qui peuvent insérer dynamiquement dès que nécessaire.                                                                            | view                            |
 | **store**              | Contient la logique permettant les opérations CRUD sur le local storage                                                                                            | model                           |
-
-<!-- prettier-ignore-end -->
 
 **DIAGRAMME MVC DE L'APP **
 

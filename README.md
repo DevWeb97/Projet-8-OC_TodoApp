@@ -1,4 +1,4 @@
-# Project 8: Todo list app
+# Projet 8: Todo list app
 
 ---
 

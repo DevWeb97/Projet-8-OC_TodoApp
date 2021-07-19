@@ -8,7 +8,8 @@
    3. [Supprimer un todo](#remove)
    4. [Marquer un todo comme "Complété"](#toggle)
    5. [Filtrer la liste de todo](#filter)
-3. [Audit]
+3. [Référence](#reference)
+4. [Audit](#audit)
 
 ---- 
 ## A propos
@@ -84,41 +85,114 @@ L'application à ce stade n'utilise pas de base de donnée à proprement parlé,
    
 ![ajouter todo](./img/full-feature_ajouter.jpg)    
 <br >
+Description:   
+[Controller.prototype.addItem](#addItem)  
+
+L'ajout d'une nouvelle tâche est déclenchée lorsque l'utilisateur valide sa saisie depuis l'interface (appuie sur entrée).
+
+Le Controller perçoit cette demande d'ajout comme un événement appelé "newTodo", reçoit ce que l'utilisateur souhaite ajouter sous forme d'une `String` , et execute alors les instructions écrites dans sa méthode **[addItem](#addItem)**:  
+
+Demande au Model de créer un nouveau todo basé sur ce que l'utilisateur a écrit, l'enregistrer dans le localStorage, et d'éxécuter le callback, qui lui est passé en argument, une fois que la sauvegarde a été effectué.
+
+Ce callback indique à la View ce qui doit être mis à jour dans l'UI suite à la création d'une nouvelle tâche
+
 <br >
-<br >
+<br >  
+  
 
 - Editer une tâche  
   
   ![editer une todo](./img/full-feature_edit.jpg)
-<br >
+<br >  
+Description:
+[Controller.prototype.editItem](#editItem)
+
+Cette méthode est appelé en réponse au double clique de l'utilisateur sur une tâche présente dans la liste.
+Lors de cet événement "itemEdit", l'`id` lié cette tâche est passé à la méthode du Controller [editItem](#editItem).  
+  
+Lors de l'éxécution de cette méthode, `id` est passé au Model pour que la todo qui y est lié soit retrouvé et utilisable pour la suite grâce à [Model.read](#read) . En second argument, un callback éxécuté lorsque le bon todo a été retrouvé du localStorage.   
+Lors de l'éxécution de callback les données retrouvées sont passés en argument à la vue via [View.render](#render).
+
 <br >
 <br >
 
 - supprimer une tâche  
   
   ![supprimer une todo](./img/full-feature_supprimer.jpg)
-<br >
+<br >  
+
+Description: [Controller.prototype.remove](#remove)  
+
+Déclenché lors d'un événement "itemRemove".  
+Reçoit alors le `id` de l'élément à supprimer.  
+[Model.remove](#remove) est appelé, en utilisant `id` pour supprimer de localStorage le bon élément.  
+La View est mis à jour une fois la suppression faite, via le callback passé en argument à Model.remove.  
+Ce callback utilise View.render avec `removeItem`, avec `id` pour que l'interface soit correctement mis à jour. 
 <br >
 <br >
 
 - Toggler une tâche  
-  
   ![toggler une todo](./img/full-feature_toggle.jpg)
 <br >
+  
+<a id="explain-toggleComplete">
+Description: [Controller.prototype.toggleComplete](#toggleComplete)
+Déclenché lors d'un événement "itemToggle". Reçoit alors un objet `item`, contenant l'id et le status de la tâche à toggler.  
+[Controller.toggleComplete](#toggleComplete) se charge de fournir l'id à [Model.read](#read)
+
 <br >
 <br >
 
 - Filtrer par status  
-
   ![filtrer par status](./img/full-feature_filtrer.jpg)
 <br >
+
+L'application se base sur des routes pour render les bons éléments. Une route étant consituée de l'url et d'une destination précédée d'un "#".  
+Il exite 3 routes possibles: 
+- localhost:_PORT_/#**all** ou **/**
+- localhost:_PORT_/#**active**
+- localhost:_PORT_/#**completed**
+
+Trois boutons labellisés "All", "Active", "Completed" permettent à l'utilisateur d'accéder aux routes associées.
+
+Pour que l'interface soit correctement affichée, trois méthodes sont utilisables: 
+
+* Afficher toutes les tâches: [Controller.prototype.showAll](#showAll):  
+* Afficher uniquement les tâches complétés: [Controller.prototype.showActive](#showActive)
+* Afficher uniquement les tâches actives: [Controller.prototype.showCompleted](#showCompleted) 
+
+Le Controller garde en permanence "en mémoire" la destination active (celle où se trouve actuellement l'utilisateur) et la destination précédente et ce depuis le tout premier lancement de l'application. (_Destination par défaut au lancement: "/", équivalent à "/all"_ ).    
+De plus, chaque changement d'url déclenche [Controller.prototype.setView](#setView).     
+Ce changement est dû à l'utilisation d'_anchored link_ (d'ou le "#" dans l'url)
+
+A chaque changement d'url **setView** est appelé, execute un appel à [_filter](#filter), ce qui à terme met à jour les données de la page.  
+
+Description: [Controller.prototype._filter](#filter)    
+Cette méthode s'appuie sur la destination active en la comparant à la destination précédente (est ce qu'il y au eu un changement de destination depuis le dernier appel de _filter? ) pour que la bonne méthode parmi show[all|active|completed] soit appelée, et ainsi afficher les bons éléments dans l'interface.
+
+Le principe de fonctionnement est le suivant : 
+1. L'utilisateur se trouve sur la page listant toutes les tâches ('/#all'), il ne souhaite voir que celle déjà complétées: il clique sur le bouton "Completed".
+2. setView est déclenché car changement d'url (maintenant '/#completed'), ce qui va permettre d'executer _filter. Il compare alors la derniere route active('all') à la route active("completed").
+3. "completed" !== "all" donc _filter fait appel à showCompleted.
+4. L'utilisateur voit l'interface avec la liste de todo complété.
+
 <br >
 <br >
 
 - Tout marquer comme complété  
   
 ![tout complete](./img/full-feature_tout-complete.jpg)
-<br >
+<br > 
+
+Description: [Controller.prototype.toggleAll](#toggleAll)  
+
+Cette méthode est executée lorsqu'un évènement de type "toggleAll" est reçu par le Controller, autrement dit lorsque l'utilisateur utilise la checkbox .toggleClass.
+Lorsque cela se produit, la valeur de l'attribut "checked" (true si la case est cochée, false sinon) est passé en argument.
+[Model.read](#read) est appelé avec pour arguments un objet contenant la valeur **contraire** de la checkbox, et un callback executé lorsque le model aura terminé son travail.   
+En passant la valeur contraire de la checkbox(true alors false est passé) comme critère de recherche au Model, on s'assure que seul les tâches correspondantes (les tâches ayant leur statut "completed" égal à false) seront retournés du localStorage, et non pas toute l'entièreté de la liste.  
+
+Ce callback va permettre d'itérer sur toutes les todos présentes en passant leur statut "completed" de false, à true.  
+ Enfin, La liste et l'interface est mis à jour via [toggleComplete](#explain-toggleComplete)
 <br >
 <br >
 
@@ -126,6 +200,13 @@ L'application à ce stade n'utilise pas de base de donnée à proprement parlé,
   
 ![tout supprime](./img/full-feature_tout-supprimer.jpg) 
 <br >
+
+Description: [Controller.prototype.removeCompletedItems](#removeCompletedItems)
+Déclenché par événement "removeCompleted", qui fait suite au clic de l'utilisateur sur le lien "clearCompleted".  
+Le Controller execute alors sa méthode [removeCompletedItems](#removeCompletedItems).  
+Celle ci demande au Model de retrouver dans la BDD toutes les todos ayant comme statut "Completed" évalué à true, et d'executer le callback passé en second argument.  
+Ce callback va itérer sur la liste retournée par le Model, et faire appel à [removeItem](#explain-removeItem) pour chaque correspondance soit supprimé.  
+
 <br >
 <br >
 
@@ -308,13 +389,53 @@ Fonctions impliqués:
 ```
 _diagramme
 
+<a id="reference" />
 
-#### Reference
+#### Référence
+
+
+##### Model
+<a id="read"/>
+<a id="create"/>
+
+##### View
+<a id="render"/>
+
+
+##### Controller
+<a id="addItem" /> 
+
+*  `Controller.addItem( title)`:  
+    - Arguments: 
+      - title : `string`
+    - Valeur de retour:  -
+    - Description:   
+       - Déclenché lorsqu'une action de type "newTodo" est effectué depuis la Vue 
+       - Fais appel au Model pour que la nouvelle tâche soit sauvegarder dans localStorage (_Model.create()_)
+       - Fais appel à la vue pour qu'elle se mette à jour (_View.render()_)
+       - Utilise une de ses fonctions internes ( *_filter()*) pour que la liste de todo soit afficher dans l'interface
+
+
+<a id="editItem" />
+
+<a id="toggleComplete" />  
+
+
+<a id="setView" />  
+
+<a id="showAll" />  
+
+<a id="showComplete" />  
+
+<a id="showActive" />  
+
+<a id="toggleAll" />  
 
 
 
-
-### Audit
 <a id="audit"/>
+
+### Audit 
+
 
 **LIEN VERS WIKI**

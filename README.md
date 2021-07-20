@@ -18,3 +18,21 @@ Projet tutoré dans le cadre du parcours Développeur d'Application Front End, *
 - Ecriture de **test fonctionnels** avec Jasmine
 - Réalisation d'**audit de performance**
 - Rédaction de **documentation** (fonctionnelle et technique)
+
+---
+
+### [Documentation](/documentation/documentation.md)
+
+Pour avoir un aperçu du fonctionnement de l'application et de ses fonctionnalités principales.
+
+### [Audit](/audit/audit.md)
+
+Rapport qui met en lumière certaines bonnes pratiques/ approches dans l'utilisation et la gestion des ressources d'un site web, pour en optimiser les performances.
+
+---
+
+### Instation et lancement:
+
+`npm install --save`
+
+Ouvrir `index.html` depuis la racine du dossier.

@@ -24,7 +24,7 @@ Todo list app est une application web qui permet de gérer une liste de choses �
 Cette application ne concentre que les fonctionnalités fondamentales d'une todo list.  
 Le but de cette app étant surtout un moyen de se familiariser avec le pattern MVC, l'écriture de test fonctionnnels avec Jasmine ainsi que réaliser un [audit](#audit) de performance sur une application similaire et concurrente
 
-#### L'architecture de l'application
+### L'architecture de l'application
 
 Le pattern MVC repose sur la séparation de l'application en 3 parties distinctes (**M**odel - **V**iew - **C**ontroller), ayant chacune un rôle spécifique:
 

@@ -29,9 +29,11 @@ Pour avoir un aperçu du fonctionnement de l'application et de ses fonctionnalit
 
 Rapport qui met en lumière certaines bonnes pratiques/ approches dans l'utilisation et la gestion des ressources d'un site web, pour en optimiser les performances.
 
+### [Correction des bugs](/correction-bugs/correction-bugs.md)
+La liste des problèmes rencontrés et leurs solutions.
 ---
 
-### Instation et lancement:
+### Installation et lancement:
 
 `npm install --save`
 

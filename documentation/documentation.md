@@ -80,7 +80,10 @@ L'application à ce stade n'utilise pas de base de donnée à proprement parlé,
 
 <a id="features" />  
 
+<br />
+
 ## Les différentes fonctionnalités
+<br />
 
 
 <a id="add" />   
@@ -242,15 +245,6 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 
 --- 
 
-## Comment ça marche ? 
-
-###  Ajout de todo:
-
-
-
-
-##### Diagramme déroulement d'un ajout de todo:
-  ![diagramme ajouter todo](./img/diag_ajouter.jpg)
 
 
 
@@ -480,63 +474,9 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 <br />
 
 
+---
 
+<br />
 <a id="audit"/>
 
 ### Audit 
-
-
-**LIEN VERS WIKI**
-
---- 
----
----
-A RETRAITER
-
-* `Store.save(updateData, callback, id)`:
-  - Arguments: 
-    - updateData : `object`
-    - callback: `function`
-    - id: `number` (optionnel)
-  - Valeur de retour: -
-  - Description:
-    - Vérifie si updateData n'existe pas déjà dans localStorage grâce à id.
-    - Ajoute updataData au localStorage si n'existe pas.  
-    - Met à a jour la liste de todo si updateData existe.
-    - Execute le callback.
-
-
-*  `Model.update(id, data, callback)`:  
-    - Arguments: 
-      - id : `number` 
-      - data: `object` (contient les propriétés qui doivent être mis à jour et leurs nouvelles valeurs )
-      - callback: `boolean` (contient les intructions à réaliser une fois que la mise à jour est terminée)
-    - Valeur de retour:  -
-    - Description:
-       - Demande la sauvegarde de data via Store.save()     
-       - Demande la mise a jour de la liste dans localStorage via  Model.update , et mise a jour de l'interface via View.render 
-
-
-
-*  `Store.find(query, callback)`: 
-    - Arguments: 
-      - query : `number` ou `string` ou `object`
-    - Valeur de retour: -
-    - Description:   
-       - Vérifie quel est le type de query, puis demande au Store de réaliser des opérations sur le localStorage, en se basant sur query et callback
-
-
-*  `Store.findAll(query)`: 
-    - Arguments: 
-      - query : `number` ou `string` ou `object`
-    - Valeur de retour: -
-    - Description:   
-       - Vérifie quel est le type de query, puis demande au Store de réaliser des opérations sur le localStorage, en se basant sur query et callback
-
-  
-*  `Model.read(query, callback)`: 
-    - Arguments: 
-      - query : `number` ou `string` ou `object`
-    - Valeur de retour: -
-    - Description:   
-       - Vérifie quel est le type de query, puis demande au Store de réaliser les opérations appropriés sur le localStorage, en se basant sur query et callback

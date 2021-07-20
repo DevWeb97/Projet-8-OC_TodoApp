@@ -11,10 +11,12 @@ Voici le résultat:
 1. Une erreur de frappe au niveau du nom d'une fonction empchait le code de se compiler.
 
 - Problème: la fonction addItem comportait 3 fois la lettre 'd' au lieu de 2  
-  ![typo initial](./img/p8_etape-1_erreur-frappe-code-initial.JPG)   
+   
+  ![typo initial](./img/p8_etape-1_erreur-frappe-code-initial.JPG)     
     <br />
 - Solution: supprimer le d superflu  
-  ![typo correction](./img/p8_etape-1_erreur-frappe-code-FINALJPG.JPG)
+  
+  ![typo correction](./img/p8_etape-1_erreur-frappe-code-FINALJPG.JPG)  
   <br />
   <br />
 
@@ -22,12 +24,15 @@ Voici le résultat:
 
 - Problème: L'approche initiale s'appuyer sur un ensemble de 10 caractères placés aléatoirement pour former un identifiant 'unique'.  
   Bien que cela fonctionne, la possibilité que deux identifiants soient constituées des mêmes nombres placés dans le même ordre existe toujours.  
+
    ![id unique initial](./img/p8_etape-1_potential-conflict-id_INITIAL.png)  
+
    <br />
 - Solution:
   - Utiliser un package tiers comme le populaire `uuid`
   - Passer par l'utilisation de timestamp. C'est cette approche qui a été choisi et qui offre l'avantage de se couper de dépendance externe.
-    ![id unique par timestamp](./img/p8_etape-1_potential-conflict-id_FINAL.png)
+  
+    ![id unique par timestamp](./img/p8_etape-1_potential-conflict-id_FINAL.png)  
     <br />
     <br />
 
@@ -40,25 +45,31 @@ Voici le résultat:
 
   ![id toggleAll manquant](./img/id-toggleAll.png)
 
-- Solution: Ajouter un id toggleAll sur le checkbox.
+- Solution: Ajouter un id toggleAll sur le checkbox.  
+  
   ![id toggleAll](./img/id-toggleAll_ajouter.png)
   <br />
   <br />
 
 4. Une boucle qui pourrait être optimisé:
 
-- Problème: Bien que la fonctionne remplisse son rôle, il est possible de raccourcir son écriture en quelques lignes
+- Problème: Bien que la fonctionne remplisse son rôle, il est possible de raccourcir son écriture en quelques lignes  
+  
   ![boucle initial](./img/p8_etape-1_optimization-loop_store-remove-fct_FINAL.png)
+  <br />
+  <br />
+ 
 - Solution: utilisation de la syntaxe ES6 et du principe de 'short-circuiting'
   ![optimisation es6](./img/p8_etape-1_optimization-loop_store-remove-fct_INITIAL.png)
   <br />
   <br />
 
-1. Un message d'erreur en console avertissant l'absence d'un fichier.
+5. Un message d'erreur en console avertissant l'absence d'un fichier.
 
 - Problème:  
   <br />
   ![erreur learn json](./img/learnJSON_before.jpg)
   le fichier learn.json est utilisé depuis `./node-modules/todomvc-common/base.js`, pour afficher des informations complémentaires sur l'application.
   Ce fichier n'est pas utile pour le bon fonctionnement de l'application.  
-   Pour supprimer l'erreur en console, le plus simple a été d'ajouter manuellement à la racine de l'application learn.json.
+
+* Solution:  Pour supprimer l'erreur en console, le plus simple a été d'ajouter manuellement à la racine de l'application learn.json.

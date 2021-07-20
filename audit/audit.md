@@ -297,7 +297,7 @@ Notons que les attributs `preload` et `preconnect` et `dns-prefetch`peuvent acc�
 
 **Quelques bonnes pratiques mis en lumière:**
 
-- Utilisation de `HTTPS` pour sécuriser les échanges de données, rassurer l'utilisateur quant à la fiabilité du site
+- Utilisation de `HTTPS` pour sécuriser les échanges de données, rassurer l'utilisateur quant à la fiabilité du site. De plus cela aide aussi pour le référencement de l'application
 
 - Eviter les librairies JS et API avec des vulnérabilités connues
 

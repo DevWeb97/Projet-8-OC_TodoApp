@@ -234,9 +234,9 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 
 <a id="reference" />
 
-#### Référence
+## Référence
 
-##### Model
+### Model
 
 <a id="create"/>
 
@@ -266,7 +266,7 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
     <br />
     <br />
 
-##### View
+### View
 
 <a id="render"/>
 
@@ -279,7 +279,7 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
     <br />
     <br />
 
-##### Controller
+### Controller
 
 <a id='addItem' />
 
@@ -373,5 +373,5 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 <br />
 <a id="audit"/>
 
-### [Audit](/audit/audit.md)
+## [Audit](/audit/audit.md)
    

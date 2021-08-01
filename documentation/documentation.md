@@ -195,9 +195,9 @@ Le principe de fonctionnement est le suivant :
    <br />
    <br />
 
-<a id='toggleAll' />
+<a id='toggleAll' />  
+
 - Tout marquer comme complété
-    
 <br > 
   
 ![Tout marquer comme complété](./img/full-feature_tout-complete.jpg)
@@ -240,29 +240,51 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 
 <a id="create"/>
 
-- `Model.prototype.create(title, callback)`: - Arguments: - title : `string` - callback: `function` - Valeur de retour: - - Description: - Utilise title pour créer un objet représentant la nouvelle tâche, utilisable par Store.save() - callback est la fonction à executer lorsque la sauvegarde de lanouvelle tâche sera effectuée.
+- `Model.prototype.create(title, callback)`:   
+- Arguments:   
+  - title : `string`   
+  - callback: `function`   
+  - Valeur de retour: -   
+- Description:  
+  - Utilise title pour créer un objet représentant la nouvelle tâche, utilisable par Store.save()  
+  - callback est la fonction à executer lorsque la sauvegarde de lanouvelle tâche sera effectuée.
   <br />
   <br />
 
 <a id="read"/>
 
-- `Model.prototype.read(query, callback)`: - Arguments: - query : `number` ou `string` ou `object` - Valeur de retour: - - Description:
-  - Vérifie quel est le type de query, puis demande au Store de réaliser les opérations appropriés sur le localStorage, en se basant sur query et callback
+- `Model.prototype.read(query, callback)`:     
+- Arguments:    
+  - query : `number` ou `string` ou `object`     
+  - Valeur de retour: -     
+-  Description:  
+  Vérifie quel est le type de query, puis demande au Store de réaliser les opérations appropriés sur le localStorage, en se basant sur query et callback
     <br />
     <br />
 
 <a id='modelRemove'>
 
-- `Model.prototype.remove(query, callback)`: - Arguments: - id : `number` - callback: `function` - Valeur de retour: - - Description:
-  - Passe l'id et le callback au Store pour que l'élèment ayant l'id soit supprimé de localStorage.
-  - Une fois supprimé, le callback est executé pour mettre à jour la View.
+- `Model.prototype.remove(query, callback)`: 
+  - Arguments:   
+    - id : `number`  
+    - callback: `function`   
+  - Valeur de retour: - 
+  - Description:  
+    - Passe l'id et le callback au Store pour que l'élèment ayant l'id soit supprimé de localStorage.
+    - Une fois supprimé, le callback est executé pour mettre à jour la View.
     <br />
     <br />
 
 <a id='modelUpdate'>
 
-- `Model.prototype.update(id, data, callback)`: - Arguments: - id : `number` - data : `objet` - callback: `function` - Valeur de retour: - - Description:
-  - Demande au Store de retrouver l'élément ayant id comme identifiant, de mettre à jour cet élément avec data et enfin d'executer le callback.
+- `Model.prototype.update(id, data, callback)`: 
+- Arguments:   
+  - id : `number`  
+  - data : `objet`  
+  - callback: `function`  
+- Valeur de retour: -    
+- Description:  
+  Demande au Store de retrouver l'élément ayant id comme identifiant, de mettre à jour cet élément avec data et enfin d'executer le callback.
     <br />
     <br />
 
@@ -275,7 +297,9 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
     - viewCmd : _string_
     - parameter : _object_
   - Valeur de retour: -
-  - Description: - viewCmd représente la fonction interne qui doit être exécuté avec le parameter spécifié - Execution de la commande met à jour les éléments nécessaires
+  - Description: 
+    -  viewCmd représente la fonction interne qui doit être exécuté avec le parameter spécifié 
+    - Execution de la commande met à jour les éléments nécessaires
     <br />
     <br />
 
@@ -284,16 +308,25 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 <a id='addItem' />
 
 - `Controller.prototype.addItem( title)`:
-  - Arguments: - title : `string` - Valeur de retour: - - Description:
-  - Déclenché lorsqu'une action de type "newTodo" est effectué depuis la Vue - Fais appel au Model pour que la nouvelle tâche soit sauvegarder dans localStorage (_Model.create()_) - Fais appel à la vue pour qu'elle se mette à jour (_View.render()_) - Utilise une de ses fonctions internes ( _\_filter()_) pour que la liste de todo soit afficher dans l'interface
+  - Arguments: 
+    -  title : `string` 
+  -  Valeur de retour: - 
+  - Description:
+    - Déclenché lorsqu'une action de type "newTodo" est effectué depuis la Vue   
+    - Fais appel au Model pour que la nouvelle tâche soit sauvegarder dans localStorage (_Model.create()_)  
+    - Fais appel à la vue pour qu'elle se mette à jour (_View.render()_)  
+    -  Utilise une de ses fonctions internes ( _\_filter()_) pour que la liste de todo soit afficher dans l'interface
     <br />
     <br />
 
 <a id="editItem" />
 
 - `Controller.prototype.editItem(id)`:
-  - Arguments: - id : `number` ou `string` ou `object` - Valeur de retour: - - Description:
-  - Fais appel au model pour que l'élément ayant id commen identifiant soit retrouvé et modifié (via )
+  - Arguments: 
+    - id : `number` ou `string` ou `object` 
+    - Valeur de retour: - 
+    -  Description:
+  - Fais appel au model pour que l'élément ayant id comme identifiant soit retrouvé et modifié (via )
     <br />
     <br />
 
@@ -309,64 +342,98 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 
 <a id='removeCompletedItems' />
 
-- `Controller.prototype.removeCompletedItems()`: - Arguments: - - Valeur de retour: - - Description:
-  - Utilise Model.read() pour que seul les todos complétées soient retrouvées du localStorage, et que le callback en second argument soit executé pour mettre à jour la View.  
-     Pour sélectionner uniquement les todos complétées passer en premier argument de Model.read un objet dont la propriété 'completed' est à true.  
-     Le callback parcourera les todos alors récupérées pour toutes les supprimées grâce à [Controller.removeItem](#removeItem)
+- `Controller.prototype.removeCompletedItems()`:  
+  - Arguments: -   
+  - Valeur de retour: -  
+  - Description:  
+    Utilise Model.read() pour que seul les todos complétées soient retrouvées du localStorage, et que le callback en second argument soit executé pour mettre à jour la View.  
+
+    Pour sélectionner uniquement les todos complétées passer en premier argument de Model.read un objet dont la propriété 'completed' est à true.  
+    
+    Le callback parcourera les todos alors récupérées pour toutes les supprimées grâce à [Controller.removeItem](#removeItem)
     <br />
     <br />
 
 <a id='removeItem' />
 
 - `Controller.prototype.removeItem(id)`:
-  - Arguments: - id : `number` - Valeur de retour: - - Description:
-  - Fais appel au [Model.remove](#modelRemove) pour retrouver le todo ayant id comme identifiant pour qu'il soit retiré du localStorage. - Fais appel a View.render pour que l'interface soit mis à jour une fois que la suppression est effectuée.
+  - Arguments: 
+    - id : `number`   
+  - Valeur de retour: -   
+  - Description:    
+    Fais appel au [Model.remove](#modelRemove) pour retrouver le todo ayant id comme identifiant pour qu'il soit retiré du localStorage. - Fais appel a View.render pour que l'interface soit mis à jour une fois que la suppression est effectuée.
     <br />
     <br />
 
 <a id="setView" />
 
-- `Controller.prototype.setView()`: - Arguments: - locationHash : `string` - Valeur de retour: - - Description:
-  - locationHash représente la partie de l'url vers laquelle on souhaite naviguer. (/#all | /#active | /#completed) - setView supprime le #, et utilise le résultat pour nous diriger sur la bonne interface. (la liste entière | uniquement les actives | uniquement les complétées )
-    <br />
-    <br />
+- `Controller.prototype.setView()`: 
+  - Arguments: 
+    - locationHash : `string` 
+  -  Valeur de retour: - 
+  -  Description:
+    locationHash représente la partie de l'url vers laquelle on souhaite naviguer. (/#all | /#active | /#completed) - setView supprime le #, et utilise le résultat pour nous diriger sur la bonne interface. (la liste entière | uniquement les actives | uniquement les complétées )
+      <br />
+      <br />
 
 <a id="showActive" />
 
-- `Controller.prototype.showActive()`: - Arguments: - - Valeur de retour: - - Description: - Demande au [Model.read](#read) de récupérer les todos qui ne sont pas marquées "complété" pour qu'elles seules soient afficher dans la liste.
-  Pour cela, passe a Model.read un objet `{ completed: false }` en premier argument puis un callback en second argument, chargé de mettre à jour la View en utilisant [View.render](#render) avec les données reçues.
-  <br />
-  <br />
+- `Controller.prototype.showActive()`: 
+  - Arguments: - 
+  - Valeur de retour: - 
+  - Description:  
+    Demande au [Model.read](#read) de récupérer les todos qui ne sont pas marquées "complété" pour qu'elles seules soient afficher dans la liste.  
+    Pour cela, passe a Model.read un objet `{ completed: false }` en premier argument puis un callback en second argument, chargé de mettre à jour la View en utilisant [View.render](#render) avec les données reçues.
+    <br />
+    <br />
 
 <a id="showAll" />
 
-- `Controller.prototype.showAll()`: - Arguments: - - Valeur de retour: - - Description: - Demande au [Model.read](#read) de récupérer toutes les todos disponible en localStorage.
-  Pour cela, passe un seul argument à Model.read um callback chargé de mettre à jour la View en utilisant [View.render](#render) avec toutes les todos reçues.
-  <br />
-  <br />
+- `Controller.prototype.showAll()`: 
+  - Arguments: -
+  - Valeur de retour: - 
+  - Description: - Demande au [Model.read](#read) de récupérer toutes les todos disponible en localStorage.
+    Pour cela, passe un seul argument à Model.read um callback chargé de mettre à jour la View en utilisant [View.render](#render) avec toutes les todos reçues.
+    <br />
+    <br />
 
 <a id="showCompleted" />
 
-- `Controller.prototype.showCompleted()`: - Arguments: - - Valeur de retour: - - Description - Demande au [Model.read](#read) de récupérer uniquement les todos qui ne sont pas marquées "complété" pour qu'elles seules soient affichées dans la liste.
-  Pour cela, passe a Model.read un objet `{ completed: true }` en premier argument puis un callback en second argument, chargé de mettre à jour la View en utilisant [View.render](#render) avec les données reçues.
-  <br />
-  <br />
+- `Controller.prototype.showCompleted()`:   
+  - Arguments: - 
+  - Valeur de retour: -    
+  -  Description:  
+    Demande au [Model.read](#read) de récupérer uniquement les todos qui ne sont pas marquées "complété" pour qu'elles seules soient affichées dans la liste.
+    Pour cela, passe a Model.read un objet `{ completed: true }` en premier argument puis un callback en second argument, chargé de mettre à jour la View en utilisant [View.render](#render) avec les données reçues.
+    <br />
+    <br />
 
 <a id="toggleAll" />
 
-- `Controller.prototype.toggleAll(completed)`: - Arguments: - completed : `boolean` - Valeur de retour: - - Description: - Demande au [Model.read](#read) de récupérer uniquement les todos qui ne sont pas marquées "complété" pour qu'elles seules soient affichées dans la liste.  
-   Pour cela, passe a Model.read :
-  - un objet `{ completed: !completed }` en premier argument pour que les todos ayant le statut inverse de completed soient retrouvées (ex: si completed = true alors seuls les todos statut à false) - puis un callback en second argument, chargé d'utiliser [toggleComplete](#toggleComplete) sur chaque todo retrouvé pour que leur statut soit mis a jour et ces changements soient reflétés dans l'interface
+- `Controller.prototype.toggleAll(completed)`: 
+  - Arguments: 
+    - completed : `boolean` 
+  - Valeur de retour: -   
+  - Description: - Demande au [Model.read](#read) de récupérer uniquement les todos qui ne sont pas marquées "complété" pour qu'elles seules soient affichées dans la liste.  
+  Pour cela, passe a Model.read :  
+  un objet `{ completed: !completed }` en premier argument pour que les todos ayant le statut inverse de completed soient retrouvées (ex: si completed = true alors seuls les todos statut à false)   
+  Puis un callback en second argument, chargé d'utiliser [toggleComplete](#toggleComplete) sur chaque todo retrouvé pour que leur statut soit mis a jour et ces changements soient reflétés dans l'interface
     <br />
     <br />
 
 <a id="toggleComplete" />
 
 - `Controller.prototype.toggleComplete(id, completed, silent)`:
-  - Arguments: - id : `number` - completed: `boolean` (valeur de la checkbox lié au todo 'toggler') - silent: `boolean` (si False empeche le filtrage de la liste) - Valeur de retour: - - Description: - Met à jour le statut de la tâche ayant id comme identifiant.
-  - Demande la mise a jour de la liste dans localStorage via [Model.update](#modelUpdate) , et mise a jour de l'interface via [View.render](#render)
-    <br />
-    <br />
+  - Arguments:  
+    - id : `number` - completed: `boolean` (valeur de la checkbox lié au todo 'toggler') 
+    - silent: `boolean` (si False empeche le filtrage de la liste) 
+ - Valeur de retour: - 
+  
+  - Description:
+    - Met à jour le statut de la tâche ayant id comme identifiant.
+    - Demande la mise a jour de la liste dans localStorage via [Model.update](#modelUpdate) , et mise a jour de l'interface via [View.render](#render)
+      <br />
+      <br />
 
 ---
 
@@ -374,4 +441,3 @@ Ce callback va itérer sur la liste retournée par le Model, et faire appel à [
 <a id="audit"/>
 
 ### [Audit](/audit/audit.md)
-   

@@ -84,7 +84,7 @@ Il offre des suggestions d'ajustement lié aux points faibles rapportés.
 
 Lighthouse a été configuré de façon à simuler l'utilisation sur un smartphone avet une connexion 3G moyenne.
 
-![Lighthouse configuration pour mobile](/audit_assets/img/config-Lighthouse-mobile-v1.JPG)
+![Lighthouse configuration pour mobile](./audit_assets/img/config-Lighthouse-mobile-v1.JPG)
 
 En effet, 68% des visites de site web à l'échelle mondiale sont faites depuis un smartphone. [(source: perficient.com)](https://www.perficient.com/insights/research-hub/mobile-vs-desktop-usage)
 
@@ -99,7 +99,7 @@ Cette configuration vient consolider notre objectif de préparer au mieux notre 
 
 ## Analyse du rapport
 
-![ Resultat global](/audit_assets/img/metric-global.JPG)
+![ Resultat global](./audit_assets/img/metric-global.JPG)
 
 Les scores fournit par Lighthouse vont de 0 à 100.
 
@@ -114,7 +114,7 @@ Ces résultats sont calculés en fonction de critères spécifiques selon le mé
 
 ### Performance
 
-![ Resultat global](/audit_assets/img/performance-metric.JPG)
+![ Resultat global](./audit_assets/img/performance-metric.JPG)
 
 Le score faible (<50) induit que le chargement du site audité (ici sur mobile) est lent.
 
@@ -166,7 +166,7 @@ Dans le cas de Todolist&period;net, seuls 2 critères (TBT et CLS) sur 6 ont ré
 
 La section "opportunités" propose des solutions possibles pour accélérer le chargement des pages du site, ainsi que le temps gagné si correctement mis en place:
 
-![Performance opportunités](/audit_assets/img/performance-opportunities.JPG)
+![Performance opportunités](./audit_assets/img/performance-opportunities.JPG)
 
 | Opportunités d'améliorations                                                                                                                  | Bénéfices                                                                                                                              |
 | --- | --- |
@@ -184,7 +184,7 @@ La section "opportunités" propose des solutions possibles pour accélérer le c
 
 La section "diagnostics" quelques points présents dans le site qui mériteraient une attention plus particulière:
 
-![ Performance diagnostiques](/audit_assets/img/performance-diagnostics.JPG)
+![ Performance diagnostiques](./audit_assets/img/performance-diagnostics.JPG)
 
 | Problèmes diagnostiqués                                                                                                  | Solutions possibles & Bénéfices                                                                                                                                                                      |
 | --- | --- |
@@ -212,7 +212,7 @@ sources:
   
 
 
-![ Mesures accessibilité](/audit_assets/img/accessibility-metrics.JPG)
+![ Mesures accessibilité](./audit_assets/img/accessibility-metrics.JPG)
 
 | Problèmes diagnostiqués | Solutions possibles & Bénéfices |
 | --- | --- |
@@ -230,7 +230,7 @@ sources:
 
 #### Best Practice
 
-![Mesures Best Practice](/audit_assets/img/best-practice-metrics.JPG)
+![Mesures Best Practice](./audit_assets/img/best-practice-metrics.JPG)
 
 | Problèmes diagnostiqués| Solutions possibles & Bénéfices|
 | --- | ---|
@@ -249,7 +249,7 @@ sources:
 
 #### SEO
 
-![Mesure best practice](/audit_assets/img/seo-metrics.JPG)
+![Mesure best practice](./audit_assets/img/seo-metrics.JPG)
 
 | Problèmes diagnostiqués                              | Solutions possibles & Bénéfices                                                                                                                              |
 | ---| ---|
@@ -297,7 +297,7 @@ Notons que les attributs `preload` et `preconnect` et `dns-prefetch`peuvent acc�
 
 **Quelques bonnes pratiques mis en lumière:**
 
-- Utilisation de `HTTPS` pour sécuriser les échanges de données, rassurer l'utilisateur quant à la fiabilité du site
+- Utilisation de `HTTPS` pour sécuriser les échanges de données, rassurer l'utilisateur quant à la fiabilité du site. De plus cela aide aussi pour le référencement de l'application
 
 - Eviter les librairies JS et API avec des vulnérabilités connues
 
